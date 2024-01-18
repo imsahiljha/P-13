@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Instagram Stats</title>
+</head>
+
+<body>
+    <div id="instagram-stats"></div>
+
+    <script>
+        // Replace 'getaccesstokenfrommeta' with your Instagram API access token
+        const accessToken = 'getaccesstokenfrommeta';
+
+        // Test usernames
+        const usernames = ['username1', 'username2', 'username3'];
+
+        // Function to fetch and display Instagram stats
+        function fetchInstagramStats(username) {
+            const url = `https://graph.instagram.com/v18.0/${username}?fields=followers_count,media_count&access_token=${accessToken}`;
+
+            // Using native fetch API
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const followersCount = data.followers_count || 0;
+                    const postCount = data.media_count || 0;
+
+                    const statsHTML = `<p>${username}: ${followersCount} followers, ${postCount} posts</p>`;
+                    document.getElementById('instagram-stats').insertAdjacentHTML('beforeend', statsHTML);
+                })
+                .catch(error => console.error('Error fetching Instagram stats:', error));
+        }
+
+        // Fetch Instagram stats for each username
+        usernames.forEach((username) => {
+            fetchInstagramStats(username);
+        });
+    </script>
+</body>
+
+</html>
