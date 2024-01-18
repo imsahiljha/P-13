@@ -1,7 +1,7 @@
 # P-13
 # Social Sage
 
-<img src="./src/mainp">
+<img src="mainp.jpeg">
 
 ## <u>Overview</u>
 Social Sage is a comprehensive social media analytics tool designed to provide users with real-time insights into their social media performance.
